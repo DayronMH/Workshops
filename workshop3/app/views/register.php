@@ -3,7 +3,6 @@ require_once '../controllers/ProvinceController.php';
 $loadProvinces = new LoadProvinces();
 $provinces = $loadProvinces->getProvinces();
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,6 +10,7 @@ $provinces = $loadProvinces->getProvinces();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="../public/register.css">
 </head>
 <body>
     <h2>Registro de Usuario</h2>
