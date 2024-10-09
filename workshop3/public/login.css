@@ -1,0 +1,72 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5; /* Color de fondo suave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background-color: #ffffff; /* Fondo blanco para contraste */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 300px;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; /* Borde gris suave */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #3b5998; /* Color de foco */
+    outline: none;
+    box-shadow: 0 0 5px rgba(59, 89, 152, 0.3); /* Sombra suave en foco */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3b5998; /* Azul fuerte (similar al de redes sociales como Facebook) */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #334f88; /* Azul más oscuro al pasar el ratón */
+}
+
+p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666; /* Texto secundario */
+}
+
+p a {
+    color: #3b5998; /* Azul del botón */
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Mensaje de error */
+p.error {
+    color: #e74c3c; /* Rojo para el mensaje de error */
+    font-size: 14px;
+}
