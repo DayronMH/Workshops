@@ -5,12 +5,11 @@ $provinces = $loadProvinces->getProvinces();
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/install-bp-ac/">
     <title>Registro de Usuario</title>
-    <link rel="stylesheet" href="../public/register.css">
 </head>
 <body>
     <h2>Registro de Usuario</h2>
