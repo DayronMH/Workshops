@@ -1,6 +1,6 @@
 <?php
 ob_start();
-require_once '../models/databaseModel.php';
+require_once '../models/registerModel.php';
 
 class register{
     public function __construct() {
@@ -31,7 +31,7 @@ class register{
             if (empty($password)) {
                 $mistakes[] = 'La contraseña no puede estar vacía.';
             } elseif (strlen($password) < 8) {
-                $mistakes[] = 'La contraseña debe tener al menos 8 caracteres.';
+                $mistakes[] = 'La contraseña debe tener mas de 8 caracteres';
             }
     
             if (empty($name)) {
@@ -53,33 +53,30 @@ class register{
             }
     
             if (empty($mistakes)) {
-                $loginModel = new registerModel($username,$password, $name,$lastname, $phone, $province, $direction);
+                $loginModel = new registerModel('login');
+                $registerModel = new registerModel('data');
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     
                 $loginId = $loginModel->createLogin($username, $hashedPassword);
     
                 if ($loginId) {
                     $loginModel->createLogin($username,$hashedPassword);
-                    $loginModel->createUser($name, $lastname, $phone, $province, $direction, $loginId);
+                    $registerModel->createUser($name, $lastname, $phone, $province, $direction, $loginId);
+                    
+                    header('Location:../views/login.php');
                     
                     
                 } else {
                     
                     $mistakes[] = 'Error al registrar el usuario.';
-                   
+                    
                 }
             }
-    
-            // Mostrar errores con alertas
             if (!empty($mistakes)) {
-                
-                echo "<script>
-                    setTimeout(function() {
-                        window.location.href = '../views/register.php';
-                    }, 3000); // 3 second delay
-                </script>";
-                exit(); // Stop script execution
+                 header('Location: ../views/register.php');
             }
+            
+        
         }
     }
 }    

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../models/databaseModel.php';
+require_once '../models/loginModel.php';
 class AuthController {
     public function __construct() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
