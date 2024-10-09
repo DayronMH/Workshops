@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require_once '../models/databaseModel.php';
 
 class register{
@@ -60,23 +61,27 @@ class register{
                 if ($loginId) {
                     $loginModel->createLogin($username,$hashedPassword);
                     $loginModel->createUser($name, $lastname, $phone, $province, $direction, $loginId);
-                    // Guardar el mensaje de éxito en la sesión
-                    $_SESSION['success_message'] = 'Usuario registrado correctamente.';
-                    // Redirigir
-                    header('Location: ../views/login.php');
-                    exit();
+                    
+                    
                 } else {
+                    
                     $mistakes[] = 'Error al registrar el usuario.';
+                   
                 }
             }
     
             // Mostrar errores con alertas
             if (!empty($mistakes)) {
-                foreach ($mistakes as $error) {
-                    echo "<script>alert('Error: {$error}');</script>";
-                }
+                
+                echo "<script>
+                    setTimeout(function() {
+                        window.location.href = '../views/register.php';
+                    }, 3000); // 3 second delay
+                </script>";
+                exit(); // Stop script execution
             }
         }
     }
 }    
 $regis = new register(); 
+ob_end_flush();
