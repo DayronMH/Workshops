@@ -11,7 +11,7 @@ class registerModel extends BaseModel{
         return $this->db->lastInsertId(); 
     }
 
-    public function createUser($name, $lastname, $phone, $province, $direction, $loginId) {
+    public function createUser($name, $lastname, $phone, $province_id, $direction, $loginId) {
         $query = "INSERT INTO data (login_id, name, lastname, phone, province, direction) 
                   VALUES (:login_id, :name, :lastname, :phone, :province, :direction)";
         $stmt = $this->db->prepare($query);
@@ -19,7 +19,7 @@ class registerModel extends BaseModel{
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':lastname', $lastname);
         $stmt->bindParam(':phone', $phone);
-        $stmt->bindParam(':province', $province);
+        $stmt->bindParam(':province', $province_id);
         $stmt->bindParam(':direction', $direction);
         return $stmt->execute();
     }

@@ -25,13 +25,15 @@ class dataModel extends BaseModel
 }
 class ProvinceModel extends BaseModel
 {  
-    public function getAllProvinces($columns = '*') {
-    $queryStr = "SELECT " . $columns . " FROM " . $this->table;
+    
+    public function getAllProvinces() {
+        // Seleccionar solo las columnas 'id' y 'name'
+        $queryStr = "SELECT id, name FROM " . $this->table;
 
-    $query = $this->db->prepare($queryStr);
-    $query->execute();
+        $query = $this->db->prepare($queryStr);
+        $query->execute();
 
-    return $query->fetchAll(PDO::FETCH_ASSOC);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }   
 }
     

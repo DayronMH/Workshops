@@ -1,12 +1,11 @@
 <?php
-require_once '../models/databaseModel.php'; // Asegúrate de incluir el archivo necesario para tu modelo
-
+require_once '../models/databaseModel.php';
 class LoadProvinces {
     private $provinces;
 
     public function __construct() {
         $itemModel = new ProvinceModel('provinces');
-        $this->provinces = $itemModel->getAllProvinces('name');
+        $this->provinces = $itemModel->getAllProvinces();
       
     }
     public function getProvinces() {
