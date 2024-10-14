@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3e5f5; /* Fondo morado suave */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+form {
+    background-color: #ffffff;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-left: 6px solid #9c27b0; /* Barra de color morado */
+}
+
+h2 {
+    text-align: center;
+    color: #6a1b9a; /* Morado oscuro para el título */
+}
+
+label {
+    font-size: 14px;
+    color: #666;
+    display: block;
+    margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: #8e24aa; 
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ab47bc; /* Morado complementario */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #9c27b0; /* Morado más oscuro al pasar el ratón */
+}
+
+.alert {
+    background-color: #e1bee7; /* Morado suave para errores o advertencias */
+    color: #6a1b9a; /* Texto morado oscuro */
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+@media (max-width: 480px) {
+    form {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
