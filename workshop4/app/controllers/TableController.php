@@ -10,6 +10,10 @@ class showData
             $this->logOut();
             return;
         }
+        if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {
+            $this->deleteUser($_GET['id']);
+        }
+        
         $userModel = new registerModel('users');
         $users = $userModel->getAllUsers();
         $provinceModel = new ProvinceModel('provinces');
@@ -49,8 +53,8 @@ class showData
 
                         if ($roleId == 1) {
                             echo "<td>
-                                  <a href='edit.php?id=" . $user['id'] . "'>Editar</a>
-                                  <a href='delete.php?id=" . $user['id'] . "'>Borrar</a>
+                                  <a href='../views/editUser.php?id=" . $user['id'] . "'>Editar</a>
+                                  <a href='?action=delete&id=" . $user['id'] . "' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este usuario?\");'>Borrar</a>
                                  </td>";
                         }
                         
@@ -66,6 +70,7 @@ class showData
                         </form>";
             } else {
                 echo "No se encontraron resultados.";
+                $_SESSION = [];
             }
 
             Database::disconnect();
@@ -79,6 +84,14 @@ class showData
             }
         }
         return 'Provincia no encontrada';
+    }
+    private function deleteUser($id) {
+        $userModel = new registerModel('users');
+        if ($userModel->deleteUser($id)) {
+            header("Location: ../controllers/showData.php?message=Usuario eliminado con éxito");
+            exit();
+        }
+ 
     }
     private function logOut()
     {

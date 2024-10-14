@@ -30,12 +30,30 @@ class RegisterModel extends BaseModel {
         $query->execute();
         return $query->fetch(PDO::FETCH_ASSOC);
     }
+    public function getUserById($id) {
+        $query = $this->db->prepare("SELECT * FROM users WHERE id = :id");
+        $query->bindParam(':id', $id);
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
     public function deleteUser($id){
         $queryStr = "DELETE FROM users WHERE `id` = $id";
         $query = $this->db->prepare($queryStr);
         $query->execute();
     }
- 
+    public function updateUser($id, $name, $lastname, $phone, $province_id, $address)
+{
+    $query = "UPDATE users SET name = :name, lastname = :lastname, phone = :phone, 
+              province_id = :province_id, address = :address WHERE id = :id";
+    $stmt = $this->db->prepare($query);
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':lastname', $lastname);
+    $stmt->bindParam(':phone', $phone);
+    $stmt->bindParam(':province_id', $province_id);
+    $stmt->bindParam(':address', $address);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+}
 
 }
 
